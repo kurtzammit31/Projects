@@ -4,7 +4,8 @@ import TodoItem from '../TodoItem/TodoItem';
 
 
 
-const TodoList: React.FC<TodoListProps> = ({todos, onDeleteTodo, onToggleCompleteTodo}) => {
+
+const TodoList: React.FC<TodoListProps> = ({todos, onDeleteTodo, onToggleCompleteTodo, onUpdateTodo}) => {
     return (
         <div>
             {
@@ -12,7 +13,7 @@ const TodoList: React.FC<TodoListProps> = ({todos, onDeleteTodo, onToggleComplet
                     (<p>No todos yet!</p>) :
                 (
                     todos.map((todo) => (
-                        <TodoItem key={todo.id} todo={todo} onDelete={onDeleteTodo} onToggleComplete={onToggleCompleteTodo} />
+                        <TodoItem key={todo.id} todo={todo} onDelete={onDeleteTodo} onToggleComplete={onToggleCompleteTodo} onUpdate={onUpdateTodo} />
                     ))
                 )
                 

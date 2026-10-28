@@ -27,11 +27,15 @@ const TodoApp: React.FC = () => {
         setTodos(todos.map(todo => todo.id === id ? {...todo, completed: !todo.completed} : todo));
     };
 
+    const updateTodo = (id: number, newText: string) => {
+    setTodos(todos.map(todo => todo.id === id ? { ...todo, text: newText } : todo));
+};
+
     return (
         <div className={styles.app}>
             <h1 className={styles.title}> Todo App</h1>
             <AddTodoForm onAddTodo={addTodo} />
-            <TodoList todos={todos} onDeleteTodo={deleteTodo} onToggleCompleteTodo={toggleCompleteTodo} />
+            <TodoList todos={todos} onDeleteTodo={deleteTodo} onToggleCompleteTodo={toggleCompleteTodo} onUpdateTodo={updateTodo} />
             <div className={styles.footer}>Total Todos: {todos.length}</div>
         </div>
     );
