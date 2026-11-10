@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import type {TodoItemProps} from '../../types/todo';
 import styles from './TodoItem.module.css';
+import useRenderCount from '../../hooks/useRenderCount';
+import RenderBadge from '../RenderBadge/RenderBadge';
 
 const TodoItem: React.FC<TodoItemProps> = ({todo, onDelete, onToggleComplete, onUpdate}) => {
+    const renderCount = useRenderCount();
     const [isEditing, setIsEditing] = useState(false);
     const [editText, setEditText] = useState(todo.text);
 
@@ -33,7 +36,11 @@ const TodoItem: React.FC<TodoItemProps> = ({todo, onDelete, onToggleComplete, on
             )}
 
             <button onClick={() => onDelete(todo.id)} className={styles.deleteButton}>Delete</button>
+            <div> 
+            <RenderBadge count={renderCount}/>
+            </div>
         </div>
+        
     );
 };
 
